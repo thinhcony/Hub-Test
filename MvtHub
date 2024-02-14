@@ -1,7 +1,7 @@
 getgenv().Config = {}
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "PS99 Script (Ver. 0.3) ", HidePremium = false, SaveConfig = false, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "Neezie Likes Porn", HidePremium = false, SaveConfig = false, ConfigFolder = "OrionTest"})
 
 local Tab =
     Window:MakeTab(

@@ -1,6 +1,6 @@
 getgenv().Config = {}
 
-local Lenut Hub = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
 local Window = OrionLib:MakeWindow({Name = "PS99 Script (Ver. 0.3)", HidePremium = false, SaveConfig = false, ConfigFolder = "OrionTest"})
 
 local Tab =
@@ -86,15 +86,6 @@ Tab:AddTextbox(
     }
 )
 
-local Tele =
-    Window:MakeTab(
-    {
-        Name = "Misc",
-        Icon = "rbxassetid://4483345998",
-        PremiumOnly = false
-    }
-)
-
 Tab:AddButton(
     {
         Name = "AntiAFK Jump",
@@ -115,7 +106,7 @@ Tab:AddButton(
 
 Tab:AddButton(
     {
-        Name = "White Screen Off",
+        Name = "Disable 3D Render",
         Callback = function()
             game:GetService("RunService"):Set3dRenderingEnabled(false)
         end
@@ -124,7 +115,7 @@ Tab:AddButton(
 
 Tab:AddButton(
     {
-        Name = "White Screen On",
+        Name = "Enable 3D Render",
         Callback = function()
             game:GetService("RunService"):Set3dRenderingEnabled(true)
         end

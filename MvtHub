@@ -1,9 +1,9 @@
 getgenv().Config = {}
 
 local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
-local Window = OrionLib:MakeWindow({Name = "Neezie Likes Porn", HidePremium = false, SaveConfig = false, ConfigFolder = "OrionTest"})
+local Window = OrionLib:MakeWindow({Name = "PS99 Script (Ver. 0.3)", HidePremium = false, SaveConfig = false, ConfigFolder = "OrionTest"})
 
-local Tab =
+local Main =
     Window:MakeTab(
     {
         Name = "Main",
@@ -21,6 +21,24 @@ local Tele =
     }
 )
 
+local Misc =
+    Window:MakeTab(
+    {
+        Name = "Misc",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    }
+)
+
+local Mailbox =
+    Window:MakeTab(
+    {
+        Name = "Mailbox",
+        Icon = "rbxassetid://4483345998",
+        PremiumOnly = false
+    }
+)
+
 Tele:AddButton(
     {
         Name = "TP Fishing Area",
@@ -31,9 +49,9 @@ Tele:AddButton(
     }
 )
 
-Tab:AddToggle(
+Main:AddToggle(
     {
-        Name = "Auto Fish (Advanced)",
+        Name = "Auto Fish (Auto Tele Advanced)",
         Default = false,
         Callback = function(v)
             Config.autoFishA = v
@@ -42,7 +60,7 @@ Tab:AddToggle(
     }
 )
 
-Tab:AddToggle(
+Mailbox:AddToggle(
     {
         Name = "Auto Mail (Huge, Shard, Gems)",
         Default = false,
@@ -53,7 +71,7 @@ Tab:AddToggle(
     }
 )
 
-Tab:AddTextbox(
+Mailbox:AddTextbox(
     {
         Name = "Username",
         Default = "",
@@ -64,7 +82,7 @@ Tab:AddTextbox(
     }
 )
 
-Tab:AddTextbox(
+Mailbox:AddTextbox(
     {
         Name = "Shard Amount",
         Default = "",
@@ -75,7 +93,7 @@ Tab:AddTextbox(
     }
 )
 
-Tab:AddTextbox(
+Mailbox:AddTextbox(
     {
         Name = "Gem Amount",
         Default = "",
@@ -86,7 +104,7 @@ Tab:AddTextbox(
     }
 )
 
-Tab:AddButton(
+Misc:AddButton(
     {
         Name = "AntiAFK Jump",
         Callback = function()
@@ -95,27 +113,18 @@ Tab:AddButton(
     }
 )
 
-Tab:AddButton(
+Misc:AddButton(
     {
-        Name = "AntiAFK Normal",
-        Callback = function()
-            antiAFKN()
-        end
-    }
-)
-
-Tab:AddButton(
-    {
-        Name = "Disable 3D Render",
+        Name = "White Screen Off",
         Callback = function()
             game:GetService("RunService"):Set3dRenderingEnabled(false)
         end
     }
 )
 
-Tab:AddButton(
+Misc:AddButton(
     {
-        Name = "Enable 3D Render",
+        Name = "White Screen On",
         Callback = function()
             game:GetService("RunService"):Set3dRenderingEnabled(true)
         end
@@ -134,19 +143,11 @@ function antiAFK()
     end
 end
 
-function antiAFKN()
-    local vu = game:GetService("VirtualUser")
-    game:GetService("Players").LocalPlayer.Idled:connect(
-        function()
-            vu:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-            wait(1)
-            vu:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
-        end)
-end
-
 function autoFishA()
-    while task.wait() and Config.autoFishA do
-        local x = math.random(10, 20)
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
+	CFrame.new(-180.852783203125, 117.92350006103516, 5175.45703125)
+	while task.wait() and Config.autoFishA do
+		local x = math.random(10, 20)
         local z = math.random(10, 20)
 
         local argsCast = {
@@ -259,6 +260,7 @@ local Library = require(game:GetService("ReplicatedStorage").Library)
 local Network = Library.Network
 local Balancing = Library.Balancing
 local Zones = Library.Directory.Zones
+local pets = Library.Save.Get().Inventory.Pet	
 
 Library.PlayerPet.CalculateSpeedMultiplier = function(...)
     return 999999999

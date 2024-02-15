@@ -51,7 +51,7 @@ Tele:AddButton(
 
 Main:AddToggle(
     {
-        Name = "Auto Fish (Auto Tele Advanced)",
+        Name = "Auto Fish (CutTay Fishing Advanced)",
         Default = false,
         Callback = function(v)
             Config.autoFishA = v
@@ -106,7 +106,7 @@ Mailbox:AddTextbox(
 
 Misc:AddButton(
     {
-        Name = "AntiAFK Jump",
+        Name = "AntiAFK",
         Callback = function()
             antiAFK()
         end
@@ -115,7 +115,7 @@ Misc:AddButton(
 
 Misc:AddButton(
     {
-        Name = "White Screen Off",
+        Name = "White Screen On",
         Callback = function()
             game:GetService("RunService"):Set3dRenderingEnabled(false)
         end
@@ -124,7 +124,7 @@ Misc:AddButton(
 
 Misc:AddButton(
     {
-        Name = "White Screen On",
+        Name = "White Screen Off",
         Callback = function()
             game:GetService("RunService"):Set3dRenderingEnabled(true)
         end
@@ -144,6 +144,7 @@ function antiAFK()
 end
 
 function autoFishA()
+    game:GetService("RunService"):Set3dRenderingEnabled(false)
 	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
 	CFrame.new(-180.852783203125, 117.92350006103516, 5175.45703125)
 	while task.wait() and Config.autoFishA do
